@@ -2,8 +2,15 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 0 128px;
+  width: 100%;
   background-color: hsl(0, 0%, 98%);
+}
+
+.homeWrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 1240px;
+  align-self: center;
 }
 
 .inputs {
@@ -12,8 +19,18 @@
   width: 100%;
 
   margin: 24px 0;
-  height: 48px;
   justify-content: space-between;
+}
+
+.searchInput {
+  width: 312px;
+  height: 48px;
+  margin: 32px 14px 0 14px;
+  border-radius: 8px;
+  border: none;
+  padding: 0 16px;
+  color: hsl(0, 0%, 52%);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
 
 .cardsContainer {
@@ -26,12 +43,13 @@
 .card {
   display: flex;
   flex-direction: column;
-  width: 256px;
+  width: 280px;
   height: 384px;
-  margin: 16px;
+  margin: 14px;
   overflow: hidden;
   border-radius: 6px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 
   img {
     width: 100%;
@@ -48,8 +66,8 @@
   height: 50%;
 
   color: hsl(200, 15%, 8%);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  background-color: hsl(0, 0%, 98%);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: hsl(0, 0%, 100%);
 }
 
 .cardInfoTitle {
@@ -65,4 +83,11 @@
   flex-direction: column;
   width: 80%;
   align-self: center;
+}
+
+@media (width < 608px) {
+  .cardsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
 }
