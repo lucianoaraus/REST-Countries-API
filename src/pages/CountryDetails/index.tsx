@@ -8,7 +8,21 @@ function CountryDetails() {
   const { name } = useParams();
 
   const countryFromParams = (country) => country.name === name;
+
   const renderCountry = countriesData.find(countryFromParams);
+
+  const {
+    flag,
+    nativeName,
+    population,
+    region,
+    subregion,
+    capital,
+    topLevelDomain,
+    currencies,
+    languages,
+    borders,
+  } = renderCountry;
 
   return (
     <div className={styles.container}>
@@ -19,57 +33,54 @@ function CountryDetails() {
         </Link>
         <div className={styles.countryData}>
           <div className={styles.countryFlagContainer}>
-            <img
-              src={renderCountry.flag}
-              alt={renderCountry.name}
-              className={styles.countryFlagImg}
-            />
+            <img src={flag} alt={name} className={styles.countryFlagImg} />
           </div>
           <div className={styles.countryText}>
-            <h2>{renderCountry.name}</h2>
+            <h2>{name}</h2>
             <div className={styles.countryDetails}>
               <div className={styles.leftColumn}>
                 <p>
-                  <strong>Native Name:</strong> {renderCountry.nativeName}
+                  <strong>Native Name:</strong> {nativeName}
                 </p>
                 <p>
-                  <strong>Population:</strong> {renderCountry.population}
+                  <strong>Population:</strong> {population}
                 </p>
                 <p>
-                  <strong>Region:</strong> {renderCountry.region}
+                  <strong>Region:</strong> {region}
                 </p>
                 <p>
-                  <strong>Sub Region:</strong> {renderCountry.subregion}
+                  <strong>Sub Region:</strong> {subregion}
                 </p>
                 <p>
-                  <strong>Capital:</strong> {renderCountry.capital}
+                  <strong>Capital:</strong> {capital}
                 </p>
               </div>
               <div className={styles.rightColumn}>
                 <p>
-                  <strong>Top Level Domain:</strong>{" "}
-                  {renderCountry.topLevelDomain}
+                  <strong>Top Level Domain:</strong> {topLevelDomain}
                 </p>
                 <p>
                   <strong>Currencies:</strong>{" "}
-                  {renderCountry.currencies.map((currency) => currency.name)}
+                  {currencies.map((currency) => currency.name)}
                 </p>
                 <p>
                   <strong>Languages:</strong>{" "}
-                  {renderCountry.languages.map(
-                    (language) => language.name + "; "
-                  )}
+                  {languages.map((language) => language.name + "; ")}
                 </p>
               </div>
             </div>
             <div className={styles.borderCountries}>
               <h3>Border Countries:</h3>
               <div className={styles.borderCountriesList}>
-                {renderCountry.borders?.map((border) => (
-                  <div className={styles.borderCountry} key={border}>
-                    {border}
-                  </div>
-                ))}
+                {borders ? (
+                  borders?.map((border) => (
+                    <div className={styles.borderCountry} key={border}>
+                      {border}
+                    </div>
+                  ))
+                ) : (
+                  <div className={styles.borderCountry}>None</div>
+                )}
               </div>
             </div>
           </div>

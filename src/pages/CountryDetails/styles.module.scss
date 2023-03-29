@@ -5,8 +5,8 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  background-color: hsl(0, 0%, 98%);
-  color: hsl(200, 15%, 8%);
+  background-color: var(--body_background);
+  color: var(--text_color);
 }
 
 .wrapper {
@@ -25,9 +25,8 @@
   align-items: center;
   justify-content: space-evenly;
   border-radius: 4px;
-  border: 2px solid hsl(0, 0%, 90%);
-  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.1);
-
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  background-color: var(--element);
   text-decoration: none;
   cursor: pointer;
 }
@@ -36,7 +35,7 @@
   display: flex;
   width: 24px;
   height: 24px;
-  color: hsl(200, 15%, 8%);
+  color: var(--text_color);
 }
 
 .button {
@@ -46,6 +45,7 @@
   align-items: center;
   border: none;
   background: none;
+  color: var(--text_color);
   cursor: pointer;
 }
 
@@ -107,7 +107,8 @@ p {
 .borderCountriesList {
   display: flex;
   flex-direction: row;
-  width: 70%;
+
+  width: 65%;
 }
 
 .borderCountry {
@@ -118,7 +119,8 @@ p {
   align-items: center;
   margin: 0 4px;
   border-radius: 4px;
-  border: 2px solid hsl(0, 0%, 90%);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  background-color: var(--element);
 }
 
 @media (width <= 520px) {

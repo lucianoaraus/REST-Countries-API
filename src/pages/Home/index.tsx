@@ -56,20 +56,20 @@ function Home() {
 
   return (
     <div className={styles.homeContainer}>
-      <div className={styles.homeWrapper}>
-        <div className={styles.inputs}>
-          <div className={styles.searchInputContainer}>
-            <SearchIcon className={styles.searchIcon} />
-            <input
-              className={styles.searchInput}
-              type="text"
-              placeholder="Search for a country..."
-              onChange={handleSearch}
-              value={search}
-            />
-          </div>
-          <FilterSelect callBack={setRegion} />
+      <div className={styles.inputs}>
+        <div className={styles.searchInputContainer}>
+          <SearchIcon className={styles.searchIcon} />
+          <input
+            className={styles.searchInput}
+            type="text"
+            placeholder="Search for a country..."
+            onChange={handleSearch}
+            value={search}
+          />
         </div>
+        <FilterSelect callBack={setRegion} />
+      </div>
+      <div className={styles.homeWrapper}>
         <div className={styles.cardsContainer}>
           {countriesToDisplay.map(renderCountry)}
         </div>

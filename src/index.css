@@ -1,0 +1,13 @@
+:root {
+  --text_color: #111517;
+  --body_background: #fafafa;
+  --element: #ffffff;
+  --input: #858585;
+}
+
+body[data-theme="dark"] {
+  --text_color: #ffffff;
+  --body_background: #202c37;
+  --element: #2b3945;
+  --input: #858585;
+}
