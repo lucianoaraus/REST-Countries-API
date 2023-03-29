@@ -1,151 +1,74 @@
-import { useParams } from "react-router-dom";
+import { countriesData } from "../../utils/countries";
+import { useParams, Link } from "react-router-dom";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
 import styles from "./styles.module.scss";
 
-const countryMock = {
-  name: "Belgium",
-  topLevelDomain: [".be"],
-  alpha2Code: "BE",
-  alpha3Code: "BEL",
-  callingCodes: ["32"],
-  capital: "Brussels",
-  altSpellings: [
-    "BE",
-    "België",
-    "Belgie",
-    "Belgien",
-    "Belgique",
-    "Kingdom of Belgium",
-    "Koninkrijk België",
-    "Royaume de Belgique",
-    "Königreich Belgien",
-  ],
-  subregion: "Western Europe",
-  region: "Europe",
-  population: 11555997,
-  latlng: [50.83333333, 4],
-  demonym: "Belgian",
-  area: 30528,
-  gini: 27.2,
-  timezones: ["UTC+01:00"],
-  borders: ["FRA", "DEU", "LUX", "NLD"],
-  nativeName: "België",
-  numericCode: "056",
-  flags: {
-    svg: "https://flagcdn.com/be.svg",
-    png: "https://flagcdn.com/w320/be.png",
-  },
-  currencies: [
-    {
-      code: "EUR",
-      name: "Euro",
-      symbol: "€",
-    },
-  ],
-  languages: [
-    {
-      iso639_1: "nl",
-      iso639_2: "nld",
-      name: "Dutch",
-      nativeName: "Nederlands",
-    },
-    {
-      iso639_1: "fr",
-      iso639_2: "fra",
-      name: "French",
-      nativeName: "français",
-    },
-    {
-      iso639_1: "de",
-      iso639_2: "deu",
-      name: "German",
-      nativeName: "Deutsch",
-    },
-  ],
-  translations: {
-    br: "Belgia",
-    pt: "Bélgica",
-    nl: "België",
-    hr: "Belgija",
-    fa: "بلژیک",
-    de: "Belgien",
-    es: "Bélgica",
-    fr: "Belgique",
-    ja: "ベルギー",
-    it: "Belgio",
-    hu: "Belgium",
-  },
-  flag: "https://flagcdn.com/be.svg",
-  regionalBlocs: [
-    {
-      acronym: "EU",
-      name: "European Union",
-    },
-  ],
-  cioc: "BEL",
-  independent: true,
-};
-
 function CountryDetails() {
-  const { country } = useParams();
+  const { name } = useParams();
+
+  const countryFromParams = (country) => country.name === name;
+  const renderCountry = countriesData.find(countryFromParams);
 
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <div
-          className={styles.buttonContainer}
-          onClick={() => alert("Go back!")}
-        >
-          Icon <button className={styles.button}>Back</button>
-        </div>
+        <Link className={styles.buttonContainer} to="/">
+          <KeyboardBackspaceIcon className={styles.arrowBackIcon} />
+          <button className={styles.button}>Back</button>
+        </Link>
         <div className={styles.countryData}>
           <div className={styles.countryFlagContainer}>
             <img
-              src={countryMock.flag}
-              alt={countryMock.name}
+              src={renderCountry.flag}
+              alt={renderCountry.name}
               className={styles.countryFlagImg}
             />
           </div>
           <div className={styles.countryText}>
-            <h2>{countryMock.name}</h2>
+            <h2>{renderCountry.name}</h2>
             <div className={styles.countryDetails}>
               <div className={styles.leftColumn}>
                 <p>
-                  <strong>Native Name:</strong> {countryMock.nativeName}
+                  <strong>Native Name:</strong> {renderCountry.nativeName}
                 </p>
                 <p>
-                  <strong>Population:</strong> {countryMock.population}
+                  <strong>Population:</strong> {renderCountry.population}
                 </p>
                 <p>
-                  <strong>Region:</strong> {countryMock.region}
+                  <strong>Region:</strong> {renderCountry.region}
                 </p>
                 <p>
-                  <strong>Sub Region:</strong> {countryMock.subregion}
+                  <strong>Sub Region:</strong> {renderCountry.subregion}
                 </p>
                 <p>
-                  <strong>Capital:</strong> {countryMock.capital}
+                  <strong>Capital:</strong> {renderCountry.capital}
                 </p>
               </div>
               <div className={styles.rightColumn}>
                 <p>
-                  <strong>Top Level Domain:</strong>
-                  {countryMock.topLevelDomain}
+                  <strong>Top Level Domain:</strong>{" "}
+                  {renderCountry.topLevelDomain}
                 </p>
                 <p>
-                  <strong>Currencies:</strong>
-                  {countryMock.currencies.map((currency) => currency.name)}
+                  <strong>Currencies:</strong>{" "}
+                  {renderCountry.currencies.map((currency) => currency.name)}
                 </p>
                 <p>
                   <strong>Languages:</strong>{" "}
-                  {countryMock.languages.map((language) => language.name)}
+                  {renderCountry.languages.map(
+                    (language) => language.name + "; "
+                  )}
                 </p>
               </div>
             </div>
             <div className={styles.borderCountries}>
               <h3>Border Countries:</h3>
               <div className={styles.borderCountriesList}>
-                {countryMock.borders.map((border) => (
-                  <div className={styles.borderCountry}>{border}</div>
+                {renderCountry.borders?.map((border) => (
+                  <div className={styles.borderCountry} key={border}>
+                    {border}
+                  </div>
                 ))}
               </div>
             </div>

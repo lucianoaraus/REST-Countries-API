@@ -22,15 +22,31 @@
   justify-content: space-between;
 }
 
-.searchInput {
+.searchInputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 312px;
   height: 48px;
   margin: 32px 14px 0 14px;
   border-radius: 8px;
   border: none;
   padding: 0 16px;
+  overflow: hidden;
   color: hsl(0, 0%, 52%);
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.searchIcon {
+  width: 15%;
+}
+
+.searchInput {
+  width: 85%;
+  height: 100%;
+  border: none;
+  background: none;
+  outline: none;
 }
 
 .cardsContainer {
@@ -49,6 +65,7 @@
   overflow: hidden;
   border-radius: 6px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
   cursor: pointer;
 
   img {

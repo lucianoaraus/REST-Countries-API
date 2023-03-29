@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import FilterSelect from "../../components/FilterSelect";
 import { countriesData } from "../../utils/countries";
 import { Link } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
 
 import styles from "./styles.module.scss";
 
@@ -31,11 +32,7 @@ function Home() {
 
   const renderCountry = (country) => {
     return (
-      <div
-        className={styles.card}
-        key={country.name}
-        onClick={() => <Link to={`/${country.name}`} />}
-      >
+      <Link className={styles.card} key={country.name} to={`/${country.name}`}>
         <img src={country.flag} alt={country.name} />
         <div className={styles.cardInfo}>
           <div className={styles.cardInfoWrapper}>
@@ -53,7 +50,7 @@ function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     );
   };
 
@@ -61,13 +58,16 @@ function Home() {
     <div className={styles.homeContainer}>
       <div className={styles.homeWrapper}>
         <div className={styles.inputs}>
-          <input
-            className={styles.searchInput}
-            type="text"
-            placeholder="Search for a country..."
-            onChange={handleSearch}
-            value={search}
-          />
+          <div className={styles.searchInputContainer}>
+            <SearchIcon className={styles.searchIcon} />
+            <input
+              className={styles.searchInput}
+              type="text"
+              placeholder="Search for a country..."
+              onChange={handleSearch}
+              value={search}
+            />
+          </div>
           <FilterSelect callBack={setRegion} />
         </div>
         <div className={styles.cardsContainer}>

@@ -24,6 +24,16 @@
 }
 
 .rightSide {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-weight: 300;
   margin: 0 14px 0 0;
+  cursor: pointer;
+}
+
+.switchThemeButton {
+  border: none;
+  background: none;
+  cursor: pointer;
 }

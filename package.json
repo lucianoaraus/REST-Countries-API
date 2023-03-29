@@ -10,6 +10,10 @@
     "host": "vite --host"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.15",
     "ariakit": "^2.0.0-next.43",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
