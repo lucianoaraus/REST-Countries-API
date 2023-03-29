@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import FilterSelect from "../../components/FilterSelect";
 import { countriesData } from "../../utils/countries";
-import CountryDetails from "../CountryDetails";
+import { Link } from "react-router-dom";
 
 import styles from "./styles.module.scss";
 
@@ -34,7 +34,7 @@ function Home() {
       <div
         className={styles.card}
         key={country.name}
-        onClick={() => alert(country.name)}
+        onClick={() => <Link to={`/${country.name}`} />}
       >
         <img src={country.flag} alt={country.name} />
         <div className={styles.cardInfo}>
