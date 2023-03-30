@@ -4,12 +4,15 @@ import {
   SelectPopover,
   useSelectState,
 } from "ariakit/select";
-
 import { regions } from "../../utils/countries";
 
 import styles from "./styles.module.scss";
 
-function FilterSelect({ callBack }) {
+interface Props {
+  callBack: (region: string) => void;
+}
+
+function FilterSelect({ callBack }: Props) {
   const select = useSelectState({
     defaultValue: "Filter by Region",
     sameWidth: true,

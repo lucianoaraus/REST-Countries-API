@@ -4,7 +4,11 @@ const ThemeContext = createContext({});
 
 const selectedTheme = localStorage.getItem("selectedTheme");
 
-const ThemeProvider = ({ children }) => {
+interface ThemeContextChildren {
+  children: React.ReactNode;
+}
+
+const ThemeProvider = ({ children }: ThemeContextChildren) => {
   const [theme, setTheme] = useState(selectedTheme);
 
   const toggleTheme = () => {

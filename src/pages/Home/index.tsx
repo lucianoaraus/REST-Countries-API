@@ -1,8 +1,9 @@
 import { useMemo, useState } from "react";
 import FilterSelect from "../../components/FilterSelect";
 import { countriesData } from "../../utils/countries";
-import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
+import CountryCard from "../../components/Card";
+import { Country } from "../../utils/interfaces";
 
 import styles from "./styles.module.scss";
 
@@ -10,7 +11,7 @@ function Home() {
   const [region, setRegion] = useState("All Regions");
   const [search, setSearch] = useState("");
 
-  const filterByRegion = (country) => {
+  const filterByRegion = (country: Country) => {
     if (region === "All Regions") {
       return true;
     } else {
@@ -22,7 +23,7 @@ function Home() {
     setSearch(e.target.value);
   };
 
-  const filterByName = (country) =>
+  const filterByName = (country: Country) =>
     country.name.toLowerCase().includes(search.toLowerCase());
 
   const countriesToDisplay = useMemo(
@@ -30,28 +31,8 @@ function Home() {
     [region, search]
   );
 
-  const renderCountry = (country) => {
-    return (
-      <Link className={styles.card} key={country.name} to={`/${country.name}`}>
-        <img src={country.flag} alt={country.name} />
-        <div className={styles.cardInfo}>
-          <div className={styles.cardInfoWrapper}>
-            <h3 className={styles.cardInfoTitle}>{country.name}</h3>
-            <div className={styles.cardInfoDetails}>
-              <p>
-                <strong>Population:</strong> {country.population}
-              </p>
-              <p>
-                <strong>Region:</strong> {country.region}
-              </p>
-              <p>
-                <strong>Capital:</strong> {country.capital}
-              </p>
-            </div>
-          </div>
-        </div>
-      </Link>
-    );
+  const renderCountry = (country: Country) => {
+    return <CountryCard country={country} />;
   };
 
   return (

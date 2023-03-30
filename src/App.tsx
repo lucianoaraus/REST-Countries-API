@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import ThemeContext from "./context/ThemeContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import { ThemeProvider } from "./context/ThemeContext";

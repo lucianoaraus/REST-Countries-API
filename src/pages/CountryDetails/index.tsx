@@ -1,13 +1,32 @@
 import { countriesData } from "../../utils/countries";
 import { useParams, Link } from "react-router-dom";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import { Country } from "../../utils/interfaces";
 
 import styles from "./styles.module.scss";
+
+interface RenderCountry {
+  flag: string;
+  name: string;
+  nativeName: string;
+  population: number;
+  region: string;
+  subregion: string;
+  capital: string;
+  topLevelDomain: string[];
+  currencies: {
+    name: string;
+  }[];
+  languages: {
+    name: string;
+  }[];
+  borders: string[];
+}
 
 function CountryDetails() {
   const { name } = useParams();
 
-  const countryFromParams = (country) => country.name === name;
+  const countryFromParams = (country: Country) => country.name === name;
 
   const renderCountry = countriesData.find(countryFromParams);
 
@@ -22,7 +41,7 @@ function CountryDetails() {
     currencies,
     languages,
     borders,
-  } = renderCountry;
+  } = renderCountry as RenderCountry;
 
   return (
     <div className={styles.container}>

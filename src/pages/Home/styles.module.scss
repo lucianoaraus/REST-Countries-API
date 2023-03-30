@@ -63,52 +63,6 @@
   justify-content: space-between;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  width: 280px;
-  height: 384px;
-  margin: 14px;
-  overflow: hidden;
-  border-radius: 6px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
-  text-decoration: none;
-  cursor: pointer;
-
-  img {
-    width: 100%;
-    height: 50%;
-    object-fit: cover;
-  }
-}
-
-.cardInfo {
-  display: flex;
-  flex-direction: column;
-
-  width: 100%;
-  height: 50%;
-
-  color: var(--text_color);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: var(--element);
-}
-
-.cardInfoTitle {
-  margin: 16px 0 4px;
-}
-
-.cardInfoDetails {
-  line-height: 12px;
-}
-
-.cardInfoWrapper {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  align-self: center;
-}
-
 @media (width < 633px) {
   .cardsContainer {
     flex-direction: column;
